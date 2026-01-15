@@ -1,0 +1,28 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  job:
+    name: Publish slide deck
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - id: tag
+        run: echo "tag=${GITHUB_REF##*/}" >> "$GITHUB_OUTPUT"
+      - uses: docker://marpteam/marp-cli:v4.2.3
+        with:
+          args: slides/index.md -o slides/index.html
+        env:
+          MARP_USER: root:root
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          destination_dir: ${{ steps.tag.outputs.tag }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: slides

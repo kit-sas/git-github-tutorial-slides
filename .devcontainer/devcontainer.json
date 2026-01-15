@@ -1,15 +1,14 @@
 {
-    "name": "git-github-tutorial",
+    "name": "git-github-tutorial-slides",
     "image": "alpine/git:latest",
     "runArgs": [
-        "--name=git-github-tutorial"
+        "--name=git-github-tutorial-slides"
     ],
     "customizations": {
         "vscode": {
             "extensions": [
                 "github.vscode-pull-request-github",
                 "marp-team.marp-vscode",
-                "mhutchie.git-graph",
                 "streetsidesoftware.code-spell-checker"
             ],
             "settings": {
