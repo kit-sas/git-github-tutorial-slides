@@ -7,11 +7,11 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 
 # Git and GitHub tutorial
 
-**On: 2026-01-15 / At: 第1研究室 / By: 谷口暁星**
+**On: 2026-01-15 / At: 第1研究室 / By: 谷口暁星 / Ver: v2026.1.1**
 
-- **目的：**
+- **目的**
     - 世界標準のバージョン管理システム[Git](https://git-scm.com/)と開発プラットフォーム[GitHub](https://github.com/)を使ったソフトウェア開発の方法をざっくり学ぶ
-- **目標：**
+- **目標**
     - 実際にGitを使って[宇宙天文科学グループ](https://github.com/kit-sas)のリポジトリにコミット（コードを追加・登録）することで開発の流れを理解する
 
 ---
@@ -41,7 +41,7 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 ## バージョン管理はなぜ必要か
 
 - **変更履歴の完全な追跡**
-    - バグが発生した場合も発見や対処が用意。また、任意の時点の状態に戻れるので、開発環境の再現性が高い。
+    - バグが発生した場合も発見や対処が容易。また、任意の時点の状態に戻れるので、開発環境の再現性が高い。
 - **変更目的の明確化**
     - ファイル名や時刻による管理では、変更をなぜ加えたかが明確でない。意味単位で管理することが複数人での開発では重要。
 - **バージョン管理の一元化**
@@ -70,7 +70,7 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 ## バージョン管理システムGit
 
 - **Gitの仕組み**
-    - フォルダのある時点での中身（ファイル・サブフォルダ）をスナップショットとして保存し、これをバージョンとみなして管理する（フォルダをzipしてバックアップを繰り返すイメージ）
+    - フォルダのある時点での中身（ファイル・サブフォルダ）をスナップショットとして保存し、これをバージョンとみなして管理する（:bulb: フォルダをzipしてバックアップを繰り返すイメージ）
 - **重要な用語**
     - リポジトリ（en: repository）：複数のスナップショット（バージョン）とそれらの対応関係を保存したデータベースのようなもの
     - コミット（en: commit）：スナップショットを作成して変更を確定すること（またはバージョンそのものを指す場合もある）
@@ -84,8 +84,9 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
         - ノード（頂点）：それぞれのコミット
         - エッジ（枝）：コミット間の対応関係（親子関係）
 - **重要な用語**
-    - ブランチ（en: branch）：分岐した枝の先頭のコミット
-    - マージ（en: merge）：2つのブランチを統合して一つにすること
+    - ブランチ（en: branch）：枝の先頭のコミットを指すポインタ
+      （:bulb: 付箋のイメージ：新規コミットで付箋が貼り直される）
+    - マージ（en: merge）：2つのコミットから統合コミットを作成
     - メインブランチ（`main`）：リポジトリのデフォルトのブランチ
 
 ---
@@ -166,7 +167,7 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 1. ローカルにリポジトリをコピー（クローン）する
 1. ローカルでIssue番号付きのトピックブランチを作成
 1. ローカルで新機能をコミット→プッシュ
-1. Pull requestでトピックブランチを`main`ブランチにマージ
+1. プルリクエストでトピックブランチを`main`ブランチにマージ
     - この際に他の人によるレビューや自動テストを受ける
     - ダメだったら修正をコミット→プッシュしてやり直し
 
@@ -181,11 +182,11 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 ## GitとGitHubを使った開発の流れ
 
 - **なんでこんな面倒なことをするのか？**
-    - Issueとトピックブランチ
+    - Issueとトピックブランチ（en: topic branch or feature branch）
         - 一連のコミットの目的を明確化させるとともに、開発者が一つの機能開発に集中できるようにするため
         - （逆に言うと複数の作業を一度に行わせないようにするため）
-    - プルリクエスト
-        - トピックブランチを`main`ブランチにマージする前にレビューやテストを強制することでバグを未然に防ぐ
+    - プルリクエスト（en: pull request or merge request）
+        - トピックブランチを`main`ブランチにマージする前にレビューやテストを強制することで、バグを未然に防ぐため
         - 第三者からの提案を安全な形で受けられる（social coding）
 
 ---
@@ -219,10 +220,10 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 - **リモートリポジトリのクローン（en: clone）**
     - [リモートリポジトリ](https://github.com/kit-sas/git-github-tutorial-playground)をクローンしローカルリポジトリを作成する
     - ローカルリポジトリをVS Codeで開く
-    ```shell
-    $ git clone https://github.com/kit-sas/git-github-tutorial-playground.git
-    $ code git-github-tutorial-playground # またはVS Codeで当該フォルダを選択して開く
-    ```
+      ```shell
+      $ git clone https://github.com/kit-sas/git-github-tutorial-playground.git
+      $ code git-github-tutorial-playground # またはVS Codeで当該フォルダを選択して開く
+      ```
 - **VS Codeの機能の概観**
     - VS Codeのエクスプローラ・ソース管理の機能を確認する
     - ソース管理のグラフ表示でコミット履歴を確認する
@@ -233,10 +234,10 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 
 - **Gitの初期設定（ローカル）**
     - `ctrl-backquote`でVS Codeのターミナルを開いて以下を設定する
-    ```shell
-    $ git config --global user.name "<your name in romaji>"
-    $ git config --global user.email "<your (dummy) public email address>"
-    ```
+      ```shell
+      $ git config --global user.name "<your name in romaji>"
+      $ git config --global user.email "<your (dummy) public email address>"
+      ```
 - **GitHub issueの作成（GitHub）**
     - [New issue](https://github.com/kit-sas/git-github-tutorial-playground/issues)からissueを作成する
       （例：[Project Aのタスクを完了させる #3](https://github.com/kit-sas/git-github-tutorial-playground/issues/3)）
